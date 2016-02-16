@@ -1,6 +1,6 @@
-package cannata;
+package Naquin.ui;
 
-public class HelloWorld {
+public class AccountApp {
 
     public static void main(String[] args) {
         // Prints "Hello, World" to the terminal window.

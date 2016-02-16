@@ -1,6 +1,6 @@
-package cannata;
+package Naquin.account.interfaces;
 
-public class HelloWorld {
+public class Balanceable {
 
     public static void main(String[] args) {
         // Prints "Hello, World" to the terminal window.

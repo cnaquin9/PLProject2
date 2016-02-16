@@ -1,6 +1,6 @@
-package cannata;
+package Naquin.business;
 
-public class HelloWorld {
+public class Account {
 
     public static void main(String[] args) {
         // Prints "Hello, World" to the terminal window.
