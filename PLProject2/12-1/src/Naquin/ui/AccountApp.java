@@ -1,19 +1,20 @@
 package Naquin.ui;
 
 
-import Naquin.account.interfaces.Balanceable;
-import Naquin.account.interfaces.Depositable;
 import Naquin.business.Account;
 import Naquin.business.CheckingAccount;
-import Naquin.business.Transactions;
 
 public class AccountApp {
 
     public static void main(String[] args) {
 
+        //Create a new checking account object
         CheckingAccount checkingaccount = new CheckingAccount();
 
+        //Create new account object
         Account account = new Account();
+
+        //Set starting balance
         double start = 1000;
         account.setBalance(start);
 
@@ -29,23 +30,28 @@ public class AccountApp {
         Console.displayLine("Enter transactions for the month");
         Console.displayLine();
 
+        //Create a while loop so the program continues until the user replies "n"
         String choice = "y";
-        while (choice.equalsIgnoreCase("y")){
+        while (choice.equalsIgnoreCase("y")) {
 
             String transaction =
                     Console.getString("Withdrawal or deposit? ");
             double amount =
                     Console.getDouble("Amount: ");
-            if (transaction.equalsIgnoreCase("w")) {
+            //If statements to decifer between withdrawals and deposits
+            if (transaction.equalsIgnoreCase("w") && amount <= account.getBalance()) { //Make sure withdrawal is not more than balance
                 account.withdraw(amount);
-            }else if (transaction.equalsIgnoreCase("d")) {
+            } else if (transaction.equalsIgnoreCase("d") && amount <= 10000) { //Make sure deposit is not more than $10,000
                 account.deposit(amount);
+            }else{
+                Console.displayLine("Your transaction cannot be completed.");
             }
             Console.displayLine();
-            choice = Console.getString("Continue? (y/n): ");
+            choice = Console.getString("Continue? (y/n): "); //Ask to continue until "n"
             Console.displayLine();
             }
 
+        //Once user answers "n", display monthly fees and final balance
         Console.displayLine("Monthly Fees");
         checkingaccount.setMonthlyFee(1);
         Console.displayLine("Checking fee:      " + checkingaccount.getMonthlyFeeFormatted());
@@ -55,7 +61,7 @@ public class AccountApp {
         Console.displayLine("Checking: " + account.getBalanceFormatted());
 
 
+        }
     }
-}
 
 
